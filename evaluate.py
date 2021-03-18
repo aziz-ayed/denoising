@@ -8,7 +8,7 @@ except ModuleNotFoundError:
     print("runstats and/or skimage could not be imported because not installed")
 import tensorflow as tf
 
-from image_utils import trim_padding
+from learnlets.image_utils import trim_padding
 
 
 def keras_psnr(y_true, y_pred):
