@@ -29,6 +29,7 @@ from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 
 # In[ ]:
 
+output_path = './data/mccd_inputs/'
 
 for i in range (20):
     
