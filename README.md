@@ -11,7 +11,7 @@ Research aimed at integrating Deep Learning denoising into PSF modelling package
 ---
 
 Point Spread Function modelling usually does not include a denoising step, as this often induces some bias in shape reconstruction. In fact, in the weak lensing regime, we would rather have noisy but errorless shapewise reconstructions than noiseless reconstructions with some error in shape measurement, no matter how small.  
-In this repository, we record our research aimed at introducing Deep denoising into the non-parametric MCCD PSF modelling with the goal of increasing the precision of the algorithm without introducing error in shape reconstruction.  
+In this repository, we record our research aimed at introducing Deep denoising into the non-parametric MCCD PSF modelling (<a href="https://hal.archives-ouvertes.fr/hal-03020214/document" target="_blank" style="text-decoration:none; color: #F08080">paper</a>) with the goal of increasing the precision of the algorithm without introducing error in shape reconstruction.  
   
 Our version of the MCCD algorithm with the integrated neural networks can be found <a href="https://github.com/aziz-ayed/mccd.git" target="_blank" style="text-decoration:none; color: #F08080">here</a>.
 
@@ -71,4 +71,13 @@ Throughout the project, we worked with different architectures that are detaille
 
 ## Results
 
+The progressive results of the standalone denoising at each step of our project can be found in the <a href="https://github.com/aziz-ayed/denoising/issues" target="_blank" style="text-decoration:none; color: #F08080">Issues</a> section of this repository.  
+The following table presents the final results of the different methods trained on the complex dataset (60% of eigenPSFs and 40% of simulated stars) when integrated into MCCD with the complex dataset.  
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/57011275/124672536-7a780700-deb7-11eb-875e-404823d6fc81.jpg" width="70%" height="70%"/>
+</p>
+
+More detailled results can be found in the <a href="https://github.com/aziz-ayed/denoising/tree/main/results" target="_blank" style="text-decoration:none; color: #F08080">dedicated</a> folder and <a href="https://github.com/aziz-ayed/denoising/blob/main/results/README.md" target="_blank" style="text-decoration:none; color: #F08080">README</a>.  
+Some complementary results are also presented in the <a href="https://github.com/aziz-ayed/mccd/issues" target="_blank" style="text-decoration:none; color: #F08080">Issues</a> section of our fork of MCCD.
 
