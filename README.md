@@ -66,7 +66,7 @@ Throughout the project, we worked with different architectures that are detaille
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/57011275/124666235-09802180-deae-11eb-89c0-297b23d64ce5.jpg" width="50%" height="50%"/>
-</p>
+</p> 
 
 
 ## Results
