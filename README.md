@@ -72,7 +72,7 @@ Throughout the project, we worked with different architectures that are detaille
 ## Results
 
 The progressive results of the standalone denoising at each step of our project can be found in the <a href="https://github.com/aziz-ayed/denoising/issues" target="_blank" style="text-decoration:none; color: #F08080">Issues</a> section of this repository.  
-The following table presents the final results of the different methods trained on the complex dataset (60% of eigenPSFs and 40% of simulated stars) when integrated into MCCD with the complex dataset.  
+The following table presents the final results of the different methods trained on the complex dataset (60% of eigenPSFs and 40% of simulated stars) when integrated into MCCD.  
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/57011275/124672536-7a780700-deb7-11eb-875e-404823d6fc81.jpg" width="70%" height="70%"/>
