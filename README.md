@@ -37,7 +37,7 @@ We started by training our algorithm with simulated stars catalogs created with 
 Stars are parametrized by 2 ellipticity components ``e1`` ``e2`` and one size component ``R2``.  
 The datasets used can thus be reproduced using the notebook above and the parameters catalogs specified in the <a href="https://github.com/aziz-ayed/denoising/issues" target="_blank" style="text-decoration:none; color: #F08080">Issues</a> section of this repository, for each step of the project.  
   
-However, the MCCD algorithm operates on eigenPSFs and not simple stars, which led us to designing a more complex training dataset. Our methodology is detailled in the dedicated <a href="https://github.com/aziz-ayed/denoising/blob/main/datasets/README.md" target="_blank" style="text-decoration:none; color: #F08080">README</a>. 
+However, the MCCD algorithm operates on eigenPSFs and not simple stars, which led us to designing a more complex training dataset. Our methodology and notebooks are detailled in the dedicated <a href="https://github.com/aziz-ayed/denoising/blob/main/datasets/README.md" target="_blank" style="text-decoration:none; color: #F08080">README</a> <a href="https://github.com/aziz-ayed/denoising/tree/main/datasets" target="_blank" style="text-decoration:none; color: #F08080">datasets</a> folder. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/57011275/124650455-10049e00-de9a-11eb-8e64-0e1da3869e5b.jpg" alt="star_vs_eigenpsf" width="50%" height="50%"/>
@@ -45,6 +45,8 @@ However, the MCCD algorithm operates on eigenPSFs and not simple stars, which le
 
 
 ## Models
+
+
 
 ## Results
 
