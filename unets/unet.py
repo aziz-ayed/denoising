@@ -119,10 +119,19 @@ class Unet(Model):
             padding='same',
             activation=None,
         )
+        
+    def pad(self, image):
+        r"""Convert images to 64x64x1 shaped tensors to feed the model, using zero-padding."""
+        pad = tf.constant([[0,0], [6,7],[6,7], [0,0]])
+        return tf.pad(image, pad, "CONSTANT")    
+        
+    def crop(self, image):
+        r"""Crop back the image to its original size and convert it to np.array"""
+        return tf.image.crop_to_bounding_box(image, 6, 6, 51, 51)
 
     def call(self, inputs):
         scales = []
-        outputs = inputs
+        outputs = self.pad(inputs)
         for conv in self.down_convs:
             outputs = conv(outputs)
             scales.append(outputs)
@@ -133,4 +142,5 @@ class Unet(Model):
             outputs = tf.concat([outputs, scale], axis=-1)
             outputs = conv(outputs)
         outputs = self.final_conv(outputs)
+        outputs = self.crop(outputs)
         return outputs

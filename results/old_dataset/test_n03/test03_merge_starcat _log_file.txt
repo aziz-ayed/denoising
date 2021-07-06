@@ -1,0 +1,44 @@
+
+# Test n03
+29/04/2021 14:16:39  - Running module: mccd_merge_starcat_runner
+29/04/2021 14:16:39 Merging validation results..
+29/04/2021 14:17:11 MCCD_merge_starcat: Regular Total pixel RMSE = 2.98395e+01
+
+29/04/2021 14:17:11 MCCD_merge_starcat: Regular Total pixel mean = -3.56591e+00
+
+29/04/2021 14:17:11 MCCD_merge_starcat: Regular Total MASKED pixel RMSE = 3.93208e+01
+
+29/04/2021 14:17:11 MCCD_merge_starcat: Regular Total MASKED pixel mean = -1.03230e+00
+
+29/04/2021 14:17:11 MCCD_merge_starcat: Normalized Total pixel RMSE = 6.53680e-03
+
+29/04/2021 14:17:11 MCCD_merge_starcat: Filtered Total pixel RMSE = 2.98395e+01
+
+29/04/2021 14:17:11 MCCD-RCA variance:
+ Mean Variance= 1.60105e+02
+ Std Variance= 3.63744e+02
+ RMSE Variance= 3.97421e+02
+
+29/04/2021 14:17:11 Masked stars variance:
+ Mean Variance= 7.23746e+02
+Std Variance= 2.76248e+02
+ RMSE Variance= 7.74675e+02
+
+29/04/2021 14:17:11 Moment residual e1:
+ Mean= 3.83134e-06
+Std Dev= 1.30924e-02
+ RMSE= 1.30924e-02
+
+29/04/2021 14:17:11 Moment residual e2:
+ Mean= -3.10697e-06
+Std Dev= 1.19927e-02
+ RMSE= 1.19927e-02
+
+29/04/2021 14:17:11 Moment residual R2:
+ Mean= -1.11570e-02
+Std Dev= 7.77688e-02
+ RMSE= 7.85651e-02
+
+29/04/2021 14:17:11 MCCD: Number of stars: 134589
+29/04/2021 14:17:12 Process produced the following output: None
+29/04/2021 14:17:12 The log file has been closed.

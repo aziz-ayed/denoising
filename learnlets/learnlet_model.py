@@ -57,6 +57,15 @@ class Learnlet(Model):
             n_scales=self.n_scales,
             **learnlet_synthesis_kwargs,
         )
+        
+    def pad(self, image):
+        r"""Convert images to 64x64x1 shaped tensors to feed the model, using zero-padding."""
+        pad = tf.constant([[0,0], [6,7],[6,7], [0,0]])
+        return tf.pad(image, pad, "CONSTANT")    
+        
+    def crop(self, image):
+        r"""Crop back the image to its original size and convert it to np.array"""
+        return tf.image.crop_to_bounding_box(image, 6, 6, 51, 51)
 
     def call(self, inputs):
         if self.exact_reconstruction:
@@ -90,7 +99,7 @@ class Learnlet(Model):
             norm_layer.set_weights([update_stds])
 
     def reweighting(self, inputs, n_reweights=3):
-        image_noisy = inputs[0]
+        image_noisy = self.pad(inputs[0])
         noise_std = inputs[1]
         learnlet_analysis_coeffs = self.analysis(image_noisy)
         details = learnlet_analysis_coeffs[:-1]
@@ -117,10 +126,10 @@ class Learnlet(Model):
         denoised_image = self.synthesis(learnlet_analysis_coeffs_thresholded)
         if self.clip:
             denoised_image = tf.clip_by_value(denoised_image, clip_value_min=-0.5, clip_value_max=0.5)
-        return denoised_image
+        return self.crop(denoised_image)
 
     def exact_reconstruction_comp(self, inputs):
-        image_noisy = inputs[0]
+        image_noisy = self.pad(inputs[0])
         noise_std = inputs[1]
         learnlet_analysis_coeffs = self.analysis(image_noisy)
         details = learnlet_analysis_coeffs[:-1]
@@ -138,4 +147,4 @@ class Learnlet(Model):
         )
         if self.clip:
             denoised_image = tf.clip_by_value(denoised_image, clip_value_min=-0.5, clip_value_max=0.5)
-        return denoised_image
+        return self.crop(denoised_image)
