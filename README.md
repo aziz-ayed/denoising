@@ -36,6 +36,7 @@ Our version of the MCCD algorithm with the integrated neural networks can be fou
 We started by training our algorithm with simulated stars catalogs created with the GalSim package. For the sake of storage space, we did not upload our datasets in this repository, but the code used to generate them can be found in the <a href="https://github.com/aziz-ayed/denoising/blob/main/dataset_generation_v2.ipynb" target="_blank" style="text-decoration:none; color: #F08080">dataset generation</a> notebook.  
 Stars are parametrized by 2 ellipticity components ``e1`` ``e2`` and one size component ``R2``.  
 The datasets used can thus be reproduced using the notebook above and the parameters catalogs specified in the <a href="https://github.com/aziz-ayed/denoising/issues" target="_blank" style="text-decoration:none; color: #F08080">Issues</a> section of this repository, for each step of the project.  
+To generate our datasets, we preprocess clean simulated images with Gaussian noise. Thus, we produced a study of CFIS data to estimate the real-life noise levels - expressed in terms of Signal to Noise ratio - than can be found in the <a href="https://github.com/aziz-ayed/denoising/tree/main/SNR_study" target="_blank" style="text-decoration:none; color: #F08080">SNR study</a> folder.
   
 However, the MCCD algorithm operates on eigenPSFs and not simple stars, which led us to designing a more complex training dataset. Our methodology and notebooks are respectively detailled in the dedicated <a href="https://github.com/aziz-ayed/denoising/blob/main/datasets/README.md" target="_blank" style="text-decoration:none; color: #F08080">README</a> and the <a href="https://github.com/aziz-ayed/denoising/tree/main/datasets" target="_blank" style="text-decoration:none; color: #F08080">datasets</a> folder. 
 
@@ -46,11 +47,27 @@ However, the MCCD algorithm operates on eigenPSFs and not simple stars, which le
 
 ## Models
 
-For our project, we decided to work with two types of neural networks.  
+For our project, we decided to work with two types of neural networks. Both models are implemented in TensorFlow and the code can be found in the ``unets`` and ``learnlets`` folders. The trained models with best performances when implemented in the MCCD algorithm can be found in the <a href="https://github.com/aziz-ayed/denoising/tree/main/Trained%20models/best_models" target="_blank" style="text-decoration:none; color: #F08080">best models</a> folder.
 
 ### U-Nets
 
-U-Nets are Deep Neural Networks widely used in vision tasks. Primarly designed for Biomedical Image Segmentation, they have an architecture that consists of ``a contracting path to capture context and a symmetric expanding path that enables precise localization``, giving it its characteristical U shape (<a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank" style="text-decoration:none; color: #F08080">paper</a>).
+U-Nets are Deep Neural Networks widely used in vision tasks, and are considered to be state-of-the-art when it comes to image denoising. Primarly designed for Biomedical Image Segmentation, they have an architecture that consists of ``a contracting path to capture context and a symmetric expanding path that enables precise localization``, giving it its characteristical U shape (<a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank" style="text-decoration:none; color: #F08080">paper</a>).  
+Throughout the project, we worked with different architectures that are detailled in the Issues section of this repository, and the final network is composed of ``16 base filters``, and the training is done in the <a href="https://github.com/aziz-ayed/denoising/blob/main/unets_training.ipynb" target="_blank" style="text-decoration:none; color: #F08080">unets_training.ipynb</a> notebook.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/57011275/124658869-99b96900-dea4-11eb-9c7b-101d4956c5de.jpg" alt="star_vs_eigenpsf" width="50%" height="50%"/>
+</p>
+
+### Learnlets
+
+Learnlets are based on a network architecture that ``conserves the properties of sparsity based methods such as exact reconstruction and good generalization properties, while fostering the power of neural networks for learning and fast calculation`` (<a href="https://hal.archives-ouvertes.fr/hal-03020214/document" target="_blank" style="text-decoration:none; color: #F08080">paper</a>).  
+Our idea is to leverage the properties of sparsity based methods to ensure solid shape reconstruction and reduce the mismeasurement introduced by our denoising algorithm.  
+Throughout the project, we worked with different architectures that are detailled in the Issues section of this repository, and the final network is composed of ``256 filters``. We started with a simple version of the Learnlets that can be found in the <a href="https://github.com/aziz-ayed/denoising/blob/main/learnlets_original_training.ipynb" target="_blank" style="text-decoration:none; color: #F08080">learnlets_original_training.ipynb</a> notebook. However, our final network uses dynamic thresholding with an estimation of the noise level of the image as an input, which can be found in the <a href="https://github.com/aziz-ayed/denoising/blob/main/learnlets_dynamic_training.ipynb" target="_blank" style="text-decoration:none; color: #F08080">learnlets_dynamic_training.ipynb</a> notebook.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/57011275/124666235-09802180-deae-11eb-89c0-297b23d64ce5.jpg" width="50%" height="50%"/>
+</p>
+
 
 ## Results
 
