@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[66]:
+
+
+r"""PREPROCESSING.
+Defines the preprocessing functions that will be used to train the model.
+"""
 
 
 import numpy as np
 import tensorflow as tf
 from astropy.io import fits
-
-r"""PREPROCESSING.
-Defines the preprocessing functions that will be used to train the model.
-"""
 
 def mad(x):
     r"""Compute an estimation of the standard deviation 
@@ -56,10 +56,11 @@ def add_noise_function(image, snr_range, tf_window):
     return norm_noisy_img, tf.reshape(tf.numpy_function(mad,[windowed_img], Tout=tf.float64), [1,])
 
 
-def data_func(path, 
+def eigenPSF_data_gen(path, 
               snr_range,
               img_shape=(51, 51),
-              batch_size=1):
+              batch_size=1,
+              win_rad=14):
     """ Dataset generator of eigen-PSFs.
 
     On-the-fly addition of noise following a SNR distribution.
@@ -71,7 +72,7 @@ def data_func(path,
     # Cast SNR range 
     tf_snr_range = tf.cast(snr_range, dtype=tf.float64)
     # Create window for noise estimation
-    tf_window = tf.cast(calculate_window(im_shape=(img_shape[0], img_shape[1]), win_rad=14), dtype=tf.bool)
+    tf_window = tf.cast(calculate_window(im_shape=(img_shape[0], img_shape[1]), win_rad), dtype=tf.bool)
     tf_window = tf.reshape(tf_window, (img_shape[0], img_shape[1], 1))
 
     # Apply noise and estimate noise std
@@ -82,9 +83,6 @@ def data_func(path,
 
     image_noisy_ds = image_noisy_ds.batch(batch_size)
     return image_noisy_ds
-
-
-# In[ ]:
 
 
 
