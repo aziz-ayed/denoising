@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
-
 r"""PREPROCESSING.
 Defines the preprocessing functions that will be used to train the model.
 """
@@ -72,7 +70,9 @@ def eigenPSF_data_gen(path,
     # Cast SNR range 
     tf_snr_range = tf.cast(snr_range, dtype=tf.float64)
     # Create window for noise estimation
-    tf_window = tf.cast(calculate_window(im_shape=(img_shape[0], img_shape[1]), win_rad), dtype=tf.bool)
+    tf_window = tf.cast(calculate_window(
+        im_shape=(img_shape[0], img_shape[1]), win_rad=win_rad),
+        dtype=tf.bool)
     tf_window = tf.reshape(tf_window, (img_shape[0], img_shape[1], 1))
 
     # Apply noise and estimate noise std

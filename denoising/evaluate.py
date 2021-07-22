@@ -1,4 +1,13 @@
+
+r"""EVALUATE.
+Module description ..
+"""
+
 import numpy as np
+import tensorflow as tf
+from denoising.image_utils import trim_padding
+# from learnlets.image_utils import trim_padding
+
 try:
     from runstats import Statistics
     from skimage.metrics import peak_signal_noise_ratio, structural_similarity
@@ -6,9 +15,6 @@ except ModuleNotFoundError:
     # TODO: this is just a quick hack to be able to submit jobs on the TGCC,
     # it has to be removed once they are installed.
     print("runstats and/or skimage could not be imported because not installed")
-import tensorflow as tf
-
-from learnlets.image_utils import trim_padding
 
 
 def keras_psnr(y_true, y_pred):

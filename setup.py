@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
+from setuptools import setup
 
-# In[ ]:
-
-
-from setuptools import setup, find_packages
-
-setup(name='denoising', version='1.0', packages=find_packages())
-
+setup(name='denoising',
+      version='0.0.1',
+      description='Denoising',
+      url='https://github.com/aziz-ayed/denoising',
+      license='MIT',
+      packages=['denoising'],
+      zip_safe=False)
