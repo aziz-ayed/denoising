@@ -82,6 +82,7 @@ def eigenPSF_data_gen(path,
     )
 
     image_noisy_ds = image_noisy_ds.batch(batch_size)
+    image_noisy_ds = image_noisy_ds.repeat().prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
     return image_noisy_ds
 
 
