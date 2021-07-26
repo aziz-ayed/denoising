@@ -58,7 +58,8 @@ def eigenPSF_data_gen(path,
               snr_range,
               img_shape=(51, 51),
               batch_size=1,
-              win_rad=14):
+              win_rad=14,
+              n_shuffle=20):
     """ Dataset generator of eigen-PSFs.
 
     On-the-fly addition of noise following a SNR distribution.
@@ -80,7 +81,8 @@ def eigenPSF_data_gen(path,
         lambda x: (add_noise_function(x, tf_snr_range, tf_window), x),
         num_parallel_calls=tf.data.experimental.AUTOTUNE
     )
-
+    
+    image_noise_ds = image_noisy_ds.shuffle(buffer_size=n_shuffle*batch_size)
     image_noisy_ds = image_noisy_ds.batch(batch_size)
     image_noisy_ds = image_noisy_ds.repeat().prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
     return image_noisy_ds
