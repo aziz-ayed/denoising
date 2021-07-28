@@ -3,13 +3,14 @@
 
 # In[3]:
 
-
+import time
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from denoising.unets.unet import Unet
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import LearningRateScheduler
+from tensorflow.keras.callbacks import ModelCheckpoint
 from denoising.evaluate import keras_psnr, keras_ssim, center_keras_psnr
 from denoising.preprocessing import eigenPSF_data_gen
 from astropy.io import fits
@@ -23,8 +24,8 @@ session = InteractiveSession(config=config)
 
 print(tf.test.gpu_device_name()) 
 
-#/n05data/ayed/outputs/eigenpsfs/dataset_eigenpsfs.fits
-img = fits.open('/Users/oa265351/Desktop/denoising/datasets/realistic_dataset/final_datasets/global_eigenpsfs.fits')
+
+img = fits.open('/n05data/ayed/outputs/eigenpsfs/dataset_eigenpsfs.fits')
 
 img = img[1].data['VIGNETS_NOISELESS']
 img = np.reshape(img, (len(img), 51, 51, 1))
@@ -60,17 +61,26 @@ model=Unet(n_output_channels=1, kernel_size=3, layers_n_channels=[64, 128, 256, 
 adam = tf.keras.optimizers.Adam(learning_rate=1e-4)
 model.compile(optimizer=adam, loss='mse')
 
-def l_rate_schedule(epoch):
-        return max(1e-3 / 2**(epoch//25), 1e-5)
-    
-lrate_cback = LearningRateScheduler(l_rate_schedule)
+#def l_rate_schedule(epoch):
+#        return max(1e-3 / 2**(epoch//25), 1e-5
+                   
+#lrate_cback = LearningRateScheduler(l_rate_schedule)                   
+       
+run_id = f'unet_{int(time.time())}'
+checkpoint_path = f'/home/ayed/github/denoising/trained_models/saved_unets/{run_id}' + '.hdf5'
+                   
+cp_callback = ModelCheckpoint(
+    filepath=checkpoint_path,
+    verbose=1,
+    save_weights_only=False,
+    save_freq=int(steps*50))
 
 history = model.fit(training, 
                     validation_data=test, 
                     epochs=n_epochs, 
                     steps_per_epoch=steps,
                     validation_steps=1,
-                    callbacks=[lrate_cback],
+                    callbacks=[cp_callback],
                     shuffle=False)
 
 plt.plot(history.history['loss'], label='Loss (training data)')
@@ -86,6 +96,8 @@ with open('/home/ayed/github/denoising/trained_models/saved_unets/modelsummary_6
     model.summary(print_fn=lambda x: f.write(x + '\n'))
     
 model.save('/home/ayed/github/denoising/trained_models/saved_unets/saving_unets')
+np.save('/home/ayed/github/denoising/trained_models/saved_unets/history.npy',history.history)
+             
 
 
 # In[ ]:
