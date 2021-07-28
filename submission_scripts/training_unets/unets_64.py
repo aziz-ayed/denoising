@@ -1,17 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
-
 import time
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from denoising.unets.unet import Unet
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import LearningRateScheduler
-from tensorflow.keras.callbacks import ModelCheckpoint
-from denoising.evaluate import keras_psnr, keras_ssim, center_keras_psnr
 from denoising.preprocessing import eigenPSF_data_gen
 from astropy.io import fits
 
@@ -24,14 +18,23 @@ session = InteractiveSession(config=config)
 
 print(tf.test.gpu_device_name()) 
 
-run_id = f'unet_{int(time.time())}'
-checkpoint_path = f'/home/ayed/github/denoising/trained_models/saved_unets/unets_64_{run_id}' + '.hdf5'
-summary_path = '/home/ayed/github/denoising/trained_models/saved_unets/modelsummary_64.txt'
-loss_path = "/home/ayed/github/denoising/trained_models/saved_unets/Loss_64.png"
-model_path = '/home/ayed/github/denoising/trained_models/saved_unets/saving_unets_64'
-history_path = '/home/ayed/github/denoising/trained_models/saved_unets/history_64.npy'
 
-img = fits.open('/n05data/ayed/outputs/eigenpsfs/dataset_eigenpsfs.fits')
+# Define paths
+base_path = '/gpfswork/rech/xdy/ulx23va/deep_denoising/'
+chkp_folder = 'chkp/'
+model_folder = 'model/'
+log_hist_folder = 'log-hist/'
+dataset_path = '/gpfswork/rech/xdy/ulx23va/data/eigenPSF_datasets/'
+
+run_id = f'_{int(time.time())}'
+checkpoint_path = base_path + chkp_folder + f'unets_64_{run_id}' + '.hdf5'
+summary_path = base_path + log_hist_folder + 'modelsummary_64.txt'
+loss_path = base_path + log_hist_folder + 'Loss_64.png'
+model_path = base_path + model_folder + 'saving_unets_64'
+history_path = base_path + log_hist_folder + 'history_64.npy'
+
+
+img = fits.open(dataset_path + 'dataset_eigenpsfs.fits')
 
 img = img[1].data['VIGNETS_NOISELESS']
 img = np.reshape(img, (len(img), 51, 51, 1))
@@ -68,12 +71,12 @@ adam = tf.keras.optimizers.Adam(learning_rate=1e-4)
 model.compile(optimizer=adam, loss='mse')
 
 #def l_rate_schedule(epoch):
-#        return max(1e-3 / 2**(epoch//25), 1e-5
+#        return max(1e-3 / 2**(epoch//25), 1e-5)
                    
 #lrate_cback = LearningRateScheduler(l_rate_schedule)                   
        
                    
-cp_callback = ModelCheckpoint(
+cp_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_path,
     verbose=1,
     save_weights_only=False,
@@ -100,12 +103,5 @@ with open(summary_path, 'w') as f:
     model.summary(print_fn=lambda x: f.write(x + '\n'))
     
 model.save(model_path)
-np.save(history_path,history.history)
-             
-
-
-# In[ ]:
-
-
-
+np.save(history_path, history.history)
 
