@@ -25,11 +25,11 @@ session = InteractiveSession(config=config)
 print(tf.test.gpu_device_name()) 
 
 run_id = f'unet_{int(time.time())}'
-checkpoint_path = f'/home/ayed/github/denoising/trained_models/saved_unets/unets_64_{run_id}' + '.hdf5'
-summary_path = '/home/ayed/github/denoising/trained_models/saved_unets/modelsummary_64.txt'
-loss_path = "/home/ayed/github/denoising/trained_models/saved_unets/Loss_64.png"
-model_path = '/home/ayed/github/denoising/trained_models/saved_unets/saving_unets_64'
-history_path = '/home/ayed/github/denoising/trained_models/saved_unets/history_64.npy'
+checkpoint_path = f'/home/ayed/github/denoising/trained_models/saved_unets/unets_64_scheduler_{run_id}' + '.hdf5'
+summary_path = '/home/ayed/github/denoising/trained_models/saved_unets/modelsummary_64_scheduler.txt'
+loss_path = "/home/ayed/github/denoising/trained_models/saved_unets/Loss_64_scheduler.png"
+model_path = '/home/ayed/github/denoising/trained_models/saved_unets/saving_unets_64_scheduler'
+history_path = '/home/ayed/github/denoising/trained_models/saved_unets/history_64_scheduler.npy'
 
 img = fits.open('/n05data/ayed/outputs/eigenpsfs/dataset_eigenpsfs.fits')
 
@@ -64,13 +64,13 @@ n_epochs = 1000
 steps = int(size_train/batch_size)
 
 model=Unet(n_output_channels=1, kernel_size=3, layers_n_channels=[64, 128, 256, 512, 1024])
-adam = tf.keras.optimizers.Adam(learning_rate=1e-4)
+adam = tf.keras.optimizers.Adam(learning_rate=1e-3)
 model.compile(optimizer=adam, loss='mse')
 
-#def l_rate_schedule(epoch):
-#        return max(1e-3 / 2**(epoch//25), 1e-5
+def l_rate_schedule(epoch):
+        return max(1e-3 / 2**(epoch//25), 1e-5
                    
-#lrate_cback = LearningRateScheduler(l_rate_schedule)                   
+lrate_cback = LearningRateScheduler(l_rate_schedule)                   
        
                    
 cp_callback = ModelCheckpoint(
@@ -84,7 +84,7 @@ history = model.fit(training,
                     epochs=n_epochs, 
                     steps_per_epoch=steps,
                     validation_steps=1,
-                    callbacks=[cp_callback],
+                    callbacks=[cp_callback, lrate_cback],
                     shuffle=False)
 
 plt.plot(history.history['loss'], label='Loss (training data)')
@@ -101,9 +101,9 @@ with open(summary_path, 'w') as f:
     
 model.save(model_path)
 np.save(history_path,history.history)
-             
-
-
+                                                            
+                                                        
+                                                        
 # In[ ]:
 
 

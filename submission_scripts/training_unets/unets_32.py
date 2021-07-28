@@ -25,11 +25,11 @@ session = InteractiveSession(config=config)
 print(tf.test.gpu_device_name()) 
 
 run_id = f'unet_{int(time.time())}'
-checkpoint_path = f'/home/ayed/github/denoising/trained_models/saved_unets/unets_64_{run_id}' + '.hdf5'
-summary_path = '/home/ayed/github/denoising/trained_models/saved_unets/modelsummary_64.txt'
-loss_path = "/home/ayed/github/denoising/trained_models/saved_unets/Loss_64.png"
-model_path = '/home/ayed/github/denoising/trained_models/saved_unets/saving_unets_64'
-history_path = '/home/ayed/github/denoising/trained_models/saved_unets/history_64.npy'
+checkpoint_path = f'/home/ayed/github/denoising/trained_models/saved_unets/unets_32_{run_id}' + '.hdf5'
+summary_path = '/home/ayed/github/denoising/trained_models/saved_unets/modelsummary_32.txt'
+loss_path = "/home/ayed/github/denoising/trained_models/saved_unets/Loss_32.png"
+model_path = '/home/ayed/github/denoising/trained_models/saved_unets/saving_unets_32'
+history_path = '/home/ayed/github/denoising/trained_models/saved_unets/history_32.npy'
 
 img = fits.open('/n05data/ayed/outputs/eigenpsfs/dataset_eigenpsfs.fits')
 
@@ -63,7 +63,7 @@ test = eigenPSF_data_gen(path=test,
 n_epochs = 1000
 steps = int(size_train/batch_size)
 
-model=Unet(n_output_channels=1, kernel_size=3, layers_n_channels=[64, 128, 256, 512, 1024])
+model=Unet(n_output_channels=1, kernel_size=3, layers_n_channels=[32, 64, 128, 256, 512])
 adam = tf.keras.optimizers.Adam(learning_rate=1e-4)
 model.compile(optimizer=adam, loss='mse')
 
