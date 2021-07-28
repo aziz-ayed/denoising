@@ -33,7 +33,7 @@ def calculate_window(im_shape=(51, 51), win_rad=14):
 
     return window
 
-def add_noise_function(image, snr_range, tf_window):
+def add_noise_function(image, snr_range, tf_window, noise_estimator=True):
     # Draw random SNR
     snr = tf.random.uniform(
             (1,),
@@ -50,8 +50,10 @@ def add_noise_function(image, snr_range, tf_window):
 
     # Apply window to the normalised noisy image
     windowed_img = tf.boolean_mask(norm_noisy_img, tf_window)
-
-    return norm_noisy_img, tf.reshape(tf.numpy_function(mad,[windowed_img], Tout=tf.float64), [1,])
+    if noise_estimator:       
+        return norm_noisy_img, tf.reshape(tf.numpy_function(mad,[windowed_img], Tout=tf.float64), [1,])
+    else:
+        return norm_noisy_img
 
 
 def eigenPSF_data_gen(path, 
@@ -59,7 +61,8 @@ def eigenPSF_data_gen(path,
               img_shape=(51, 51),
               batch_size=1,
               win_rad=14,
-              n_shuffle=20):
+              n_shuffle=20,
+              noise_estimator=True):
     """ Dataset generator of eigen-PSFs.
 
     On-the-fly addition of noise following a SNR distribution.
@@ -78,7 +81,7 @@ def eigenPSF_data_gen(path,
 
     # Apply noise and estimate noise std
     image_noisy_ds = ds.map(
-        lambda x: (add_noise_function(x, tf_snr_range, tf_window), x),
+        lambda x: (add_noise_function(x, tf_snr_range, tf_window, noise_estimator=noise_estimator), x),
         num_parallel_calls=tf.data.experimental.AUTOTUNE
     )
     
