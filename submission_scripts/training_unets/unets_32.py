@@ -34,9 +34,8 @@ model_path = base_path + model_folder + 'saving_unets_32'
 history_path = base_path + log_hist_folder + 'history_32.npy'
 
 
+print('Dataset preprocessing..')
 img = fits.open(dataset_path + 'dataset_eigenpsfs.fits')
-
-
 img = img[1].data['VIGNETS_NOISELESS']
 img = np.reshape(img, (len(img), 51, 51, 1))
 
@@ -83,13 +82,15 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(
     save_weights_only=False,
     save_freq=int(steps*50))
 
+print('Training model..')
 history = model.fit(training, 
                     validation_data=test, 
                     epochs=n_epochs, 
                     steps_per_epoch=steps,
                     validation_steps=1,
                     callbacks=[cp_callback],
-                    shuffle=False)
+                    shuffle=False,
+                    verbose=2)
 
 plt.plot(history.history['loss'], label='Loss (training data)')
 plt.plot(history.history['val_loss'], label='Loss (validation data)')
@@ -106,3 +107,4 @@ with open(summary_path, 'w') as f:
 model.save(model_path)
 np.save(history_path,history.history)
 
+print('Good bye.')
