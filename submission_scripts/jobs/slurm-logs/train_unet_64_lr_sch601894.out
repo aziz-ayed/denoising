@@ -1,0 +1,155 @@
+runstats and/or skimage could not be imported because not installed
+/device:GPU:0
+Dataset preprocessing..
+Training model..
+Epoch 1/1000
+3924/3924 - 313s - loss: 4.5490e-05 - val_loss: 5.6197e-08
+Epoch 2/1000
+3924/3924 - 305s - loss: 4.5645e-05 - val_loss: 1.2196e-08
+Epoch 3/1000
+3924/3924 - 304s - loss: 4.5636e-05 - val_loss: 3.3567e-09
+Epoch 4/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 3.8335e-09
+Epoch 5/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 3.6636e-09
+Epoch 6/1000
+3924/3924 - 304s - loss: 4.5549e-05 - val_loss: 2.9083e-09
+Epoch 7/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 3.3208e-08
+Epoch 8/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 6.8115e-08
+Epoch 9/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 4.7949e-08
+Epoch 10/1000
+3924/3924 - 305s - loss: 4.5635e-05 - val_loss: 6.1433e-09
+Epoch 11/1000
+3924/3924 - 304s - loss: 4.5456e-05 - val_loss: 2.1573e-08
+Epoch 12/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 1.5939e-08
+Epoch 13/1000
+3924/3924 - 305s - loss: 4.5635e-05 - val_loss: 3.0781e-09
+Epoch 14/1000
+3924/3924 - 305s - loss: 4.5635e-05 - val_loss: 1.2142e-08
+Epoch 15/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 3.8057e-08
+Epoch 16/1000
+3924/3924 - 305s - loss: 4.5635e-05 - val_loss: 3.8414e-08
+Epoch 17/1000
+3924/3924 - 305s - loss: 4.5635e-05 - val_loss: 1.1686e-08
+Epoch 18/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 5.9254e-09
+Epoch 19/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 4.1439e-08
+Epoch 20/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 6.1848e-08
+Epoch 21/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 2.7827e-08
+Epoch 22/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 2.9982e-09
+Epoch 23/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 4.7990e-08
+Epoch 24/1000
+3924/3924 - 304s - loss: 4.5635e-05 - val_loss: 1.0202e-07
+Epoch 25/1000
+3924/3924 - 305s - loss: 4.5635e-05 - val_loss: 7.1124e-08
+Epoch 26/1000
+3924/3924 - 305s - loss: 4.5624e-05 - val_loss: 6.0592e-08
+Epoch 27/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 6.6546e-08
+Epoch 28/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 3.7525e-08
+Epoch 29/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 4.9009e-09
+Epoch 30/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 1.7183e-08
+Epoch 31/1000
+3924/3924 - 305s - loss: 4.5624e-05 - val_loss: 7.7263e-08
+Epoch 32/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 1.3570e-07
+Epoch 33/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 1.3137e-07
+Epoch 34/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 6.1151e-08
+Epoch 35/1000
+3924/3924 - 305s - loss: 4.5359e-05 - val_loss: 3.9490e-09
+Epoch 36/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 2.5956e-09
+Epoch 37/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 3.3240e-09
+Epoch 38/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 5.5927e-09
+Epoch 39/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 7.1225e-09
+Epoch 40/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 6.0918e-09
+Epoch 41/1000
+3924/3924 - 304s - loss: 4.5625e-05 - val_loss: 3.5163e-09
+Epoch 42/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 2.7575e-09
+Epoch 43/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 6.3452e-09
+Epoch 44/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 1.1796e-08
+Epoch 45/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 1.4160e-08
+Epoch 46/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 1.0920e-08
+Epoch 47/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 4.7491e-09
+Epoch 48/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 2.7629e-09
+Epoch 49/1000
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 8.6679e-09
+Epoch 50/1000
+
+Epoch 00050: saving model to /gpfswork/rech/xdy/ulx23va/deep_denoising/chkp/unets_64_scheduler__1627531472.hdf5
+3924/3924 - 305s - loss: 4.5625e-05 - val_loss: 1.7040e-08
+Epoch 51/1000
+3924/3924 - 305s - loss: 4.5616e-05 - val_loss: 1.7545e-08
+Epoch 52/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 1.0684e-08
+Epoch 53/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 3.7518e-09
+Epoch 54/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 3.8495e-09
+Epoch 55/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 1.4760e-08
+Epoch 56/1000
+3924/3924 - 305s - loss: 4.5616e-05 - val_loss: 3.3369e-08
+Epoch 57/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 4.9735e-08
+Epoch 58/1000
+3924/3924 - 305s - loss: 4.5616e-05 - val_loss: 5.3489e-08
+Epoch 59/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 4.1181e-08
+Epoch 60/1000
+3924/3924 - 305s - loss: 4.5495e-05 - val_loss: 2.0032e-08
+Epoch 61/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 1.1911e-08
+Epoch 62/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 4.2569e-09
+Epoch 63/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 3.2141e-09
+Epoch 64/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 1.1392e-08
+Epoch 65/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 2.4694e-08
+Epoch 66/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 3.5294e-08
+Epoch 67/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 3.5942e-08
+Epoch 68/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 2.5594e-08
+Epoch 69/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 1.0340e-08
+Epoch 70/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 2.5457e-09
+Epoch 71/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 1.1801e-08
+Epoch 72/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 3.7868e-08
+Epoch 73/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 6.9172e-08
+Epoch 74/1000
+3924/3924 - 304s - loss: 4.5616e-05 - val_loss: 8.7232e-08
+Epoch 75/1000
