@@ -10,7 +10,8 @@ Research aimed at integrating Deep Learning denoising into PSF modelling package
 > Current release: 06/07/2021
 ---
 
-Point Spread Function modelling usually does not include a denoising step, as this often induces some bias in shape reconstruction. In fact, in the weak lensing regime, we would rather have noisy but errorless shapewise reconstructions than noiseless reconstructions with some error in shape measurement, no matter how small.  
+The motivation behind Point Spread Function modelling is to build a model to correct telescopes' observations. We use some stars observations as samples of the PSF field to infer the PSF at galaxy positions.  
+However, Point Spread Function modelling usually does not include a denoising step, as this often induces some bias in shape reconstruction. In fact, in the weak lensing regime, we would rather have noisy but errorless shapewise reconstructions than noiseless reconstructions with some error in shape measurement, no matter how small.  
 In this repository, we record our research aimed at introducing Deep denoising into the non-parametric MCCD PSF modelling (<a href="https://arxiv.org/pdf/2011.09835.pdf" target="_blank" style="text-decoration:none; color: #F08080">paper</a>) with the goal of increasing the precision of the algorithm without introducing error in shape reconstruction.  
   
 Our version of the MCCD algorithm with the integrated neural networks can be found <a href="https://github.com/aziz-ayed/mccd.git" target="_blank" style="text-decoration:none; color: #F08080">here</a>.
@@ -30,6 +31,16 @@ Our version of the MCCD algorithm with the integrated neural networks can be fou
 - [ModOpt](https://github.com/CEA-COSMIC/ModOpt)
 - [TensorFlow](https://github.com/tensorflow/tensorflow)
 - [Original MCCD](https://github.com/CosmoStat/mccd)
+
+## Optimization problem
+
+The optimization problem we try to tackle through the MCCD algorithm can be written as follows:
+<p align="center">
+  <img src="http://www.sciweavers.org/upload/Tex2Img_1627663943/render.png" alt="optimization_equation" width="50%" height="50%"/>
+</p>
+
+The first sum represents the data fidelity term. The first indicator function is a positivity constraint. The rest of the indicator functions over the sigma sets are spatial constraint terms to ensure the smoothness of the PSF model over the field of view.  
+The two remaining sums represent Starlets (Wavelets) transforms and can be seen as proximal operators in the optimization algorithms we use. Thus, our research aimed to replace these with neural networks to ensure better denoising results while maintaining good shape reconstruction. 
 
 ## Datasets
 
