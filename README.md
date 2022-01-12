@@ -19,6 +19,7 @@ Our version of the MCCD algorithm with the integrated neural networks can be fou
 1. [Packages Used](#packages-used)
 1. [Datasets](#datasets)
 1. [Models](#models)
+
 1. [Results](#results)
 
 
@@ -36,7 +37,7 @@ Our version of the MCCD algorithm with the integrated neural networks can be fou
 
 The optimization problem we try to tackle through the MCCD algorithm can be written as follows:
 <p align="center">
-  <img src="http://www.sciweavers.org/upload/Tex2Img_1627663943/render.png" alt="optimization_equation" width="50%" height="50%"/>
+  <img src="https://user-images.githubusercontent.com/57011275/149171420-3808e24a-8f27-4d2a-a3ed-086442890602.png" alt="optimization_equation" width="50%" height="50%"/>
 </p>
 
 The first sum represents the data fidelity term. The first indicator function is a positivity constraint. The rest of the indicator functions over the sigma sets are spatial constraint terms to ensure the smoothness of the PSF model over the field of view.  
