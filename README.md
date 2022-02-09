@@ -6,7 +6,7 @@ Research aimed at integrating Deep Learning denoising into PSF modelling package
 > Main contributors: <a href="https://github.com/aziz-ayed" target="_blank" style="text-decoration:none; color: #F08080">Aziz Ayed</a> - <a href="https://tobias-liaudat.github.io" target="_blank" style="text-decoration:none; color: #F08080">Tobias Liaudat</a>  
 > Email: <a href="mailto:aziz.ayed@hec.edu" style="text-decoration:none; color: #F08080">aziz.ayed@hec.edu</a> - <a href="mailto:tobias.liaudat@cea.fr" style="text-decoration:none; color: #F08080">tobias.liaudat@cea.fr</a>  
 > Documentation:   
-> Article:  
+> Article: ...
 > Current release: 06/07/2021
 ---
 
